@@ -1,17 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
     <>
       <nav>
+        <div>
+          <h1>
+            <Link to="/">Demo Logo</Link>
+          </h1>
+        </div>
         <ul>
           <li>
-            <NavLink
-              style={(isActive) => (isActive ? { color: 'blue' } : undefined)}
-              to="/"
-            >
-              Home
-            </NavLink>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
             <NavLink to="/about">About</NavLink>
