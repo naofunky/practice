@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .contents {
@@ -88,6 +87,27 @@ nav > div > h1 > a:hover {
   transform: translateY(0px);
 }
 .notFoundContainer > a:hover {
+  opacity: 0.6;
+  transform: translateY(2px);
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  width: 160px;
+  height: 40px;
+  border: 1px solid rgb(77, 75, 75);
+  border-radius: 24px;
+  transform: translateY(0px);
+  cursor: pointer;
+}
+
+.toggleBtn:hover {
   opacity: 0.6;
   transform: translateY(2px);
 }
