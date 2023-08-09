@@ -1,4 +1,4 @@
-import BackToTopBtn from '../../backToTopBtn/components/BackToTopBtn';
+import BackToTopBtn from '../../Button/backToTopBtn/components/BackToTopBtn';
 
 const Notfound = () => {
   return (

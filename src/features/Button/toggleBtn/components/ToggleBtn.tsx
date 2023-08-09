@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
-import ModalTop from '../../modalTop/components/ModalTop';
+import ModalTop from '../../../Modal/modalTop/components/ModalTop';
+import '../../../../App.css';
 
 const ToggleBtn = () => {
   const [isOpen, toggle] = useReducer((state) => !state, false);

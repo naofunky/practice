@@ -1,5 +1,4 @@
-import React from 'react';
-import Header from '../../Header/components/Header';
+import Header from '../../../Header/components/Header';
 
 const Contact = () => {
   return (

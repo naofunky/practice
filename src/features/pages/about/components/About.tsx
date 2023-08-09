@@ -1,5 +1,5 @@
-import Header from '../../Header/components/Header';
-import ToggleBtn from '../../toggleBtn/components/ToggleBtn';
+import Header from '../../../Header/components/Header';
+import ToggleBtn from '../../../Button/toggleBtn/components/ToggleBtn';
 
 const About = () => {
   return (
