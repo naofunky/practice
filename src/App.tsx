@@ -5,6 +5,7 @@ import About from './features/pages/about/components/About';
 import Contact from './features/pages/contact/components/Contact';
 import Notfound from './features/Notfound/components/Notfound';
 import Work from './features/pages/work/components/Work';
+import { Search } from './features/pages/search/components/Search';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/search" element={<Search />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </div>
