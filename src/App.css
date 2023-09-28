@@ -147,3 +147,32 @@ nav > div > h1 > a:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
+.contactContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contactInputCOntainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.contactButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+  width: 300px;
+  height: 40px;
+  border: 1px solid rgb(77, 75, 75);
+  border-radius: 24px;
+  transform: translateY(0px);
+  cursor: pointer;
+}
