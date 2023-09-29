@@ -1,7 +1,8 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { Post } from '../../../../types/PostTypes';
 import Header from '../../../Header/components/Header';
 import useSWR from 'swr';
+import ContactInput from '../../../Input/components/ContactInput';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -10,10 +11,6 @@ const Contact = () => {
   const [title, setTitle] = useState('');
   // 単語フィルタリンングしたタイトルを配列で格納
   const [searchTitle, setSearchTitle] = useState([]);
-
-  const changeTitleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
 
   const { data, error, isLoading } = useSWR(
     'https://jsonplaceholder.typicode.com/posts',
@@ -32,11 +29,7 @@ const Contact = () => {
       <Header />
       <div className="contactContainer">
         <div className="contactInputCOntainer">
-          <input
-            type="text"
-            onChange={(e) => changeTitleInput(e)}
-            value={title}
-          />
+          <ContactInput title={title} setTitle={setTitle} />
           <button
             className="contactButton"
             onClick={() => contactSearchTitle()}
