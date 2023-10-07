@@ -6,6 +6,7 @@ import Contact from './features/pages/contact/components/Contact';
 import Notfound from './features/Notfound/components/Notfound';
 import Work from './features/pages/work/components/Work';
 import { Search } from './features/pages/search/components/Search';
+import Policy from './features/pages/policy/components/Policy';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/work" element={<Work />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/policy" element={<Policy />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </div>
