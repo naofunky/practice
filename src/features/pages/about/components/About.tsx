@@ -7,15 +7,31 @@ const About = () => {
   const [inputPassword, setInputPassword] = useState<string>('');
 
   function createPassword() {
+    // const material =
+    //   'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=';
+    // let password = '';
+    // const passwordLength = 16;
+    // for (let i = 0; i < passwordLength; i++) {
+    //   const randomNumber = Math.floor(Math.random() * material.length);
+    //   password += material.substring(randomNumber, randomNumber + 1);
+    // }
+    // console.log(password);
+    // setInputPassword(password);
     const material =
       'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=';
-    let password = '';
+
     const passwordLength = 16;
-    for (let i = 0; i < passwordLength; i++) {
+
+    const generateRandomCharacter = () => {
       const randomNumber = Math.floor(Math.random() * material.length);
-      password += material.substring(randomNumber, randomNumber + 1);
-    }
-    console.log(password);
+      return material.charAt(randomNumber);
+    };
+
+    const passwordArray = new Array(passwordLength)
+      .fill(null)
+      .map(generateRandomCharacter);
+    const password = passwordArray.join('');
+
     setInputPassword(password);
   }
   return (
