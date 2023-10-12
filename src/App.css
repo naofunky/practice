@@ -176,3 +176,7 @@ nav > div > h1 > a:hover {
   transform: translateY(0px);
   cursor: pointer;
 }
+
+.createPassword {
+  width: 500px;
+}
