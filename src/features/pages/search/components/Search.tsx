@@ -1,57 +1,44 @@
-import { ChangeEvent, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Header from '../../../Header/components/Header';
-import { fetchPosts } from '../hooks/fetchPosts';
-import { filterPosts } from '../hooks/filterPosts';
+import { useState } from 'react';
+
+type Post = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
 
 export const Search = () => {
-  // 検索単語の状態を管理する
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  // ユーザーIDの状態を管理する
-  const [userId, setUserId] = useState<number>(0);
+  // 取得したデータを格納
+  const [postData, setPostData] = useState<Post[]>([]);
 
-  const changeSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+  // データ取得
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['search'],
+    queryFn: () =>
+      fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
+        res.json()
+      ),
+  });
+
+  const clickPostData = async () => {
+    setPostData(data);
   };
 
-  const changeUserId = (e: ChangeEvent<HTMLInputElement>) => {
-    setUserId(e.target.valueAsNumber);
-  };
-
-  const clickSearchPosts = async () => {
-    // APIからデータを取得
-    const posts = await fetchPosts();
-
-    // フィルタリングを行う
-    const filteredPosts = filterPosts(posts, searchTerm, userId);
-    console.log(filteredPosts);
-  };
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
   return (
     <div>
       <Header />
+      <button onClick={() => clickPostData()}>記事を取得</button>
       <h1>search</h1>
-      <label>
-        検索語:
-        <input
-          type="text"
-          id="searchTerm"
-          value={searchTerm}
-          onChange={(e) => changeSearch(e)}
-        />
-      </label>
-
-      <label>
-        ユーザID:
-        <input
-          type="number"
-          id="userId"
-          value={userId}
-          onChange={(e) => changeUserId(e)}
-        />
-      </label>
-
-      <button onClick={clickSearchPosts}>検索</button>
-
-      <div id="results"></div>
+      {postData.map((item: Post) => (
+        <li key={item.id}>
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+        </li>
+      ))}
     </div>
   );
 };

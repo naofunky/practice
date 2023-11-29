@@ -7,10 +7,12 @@ import Notfound from './features/Notfound/components/Notfound';
 import Work from './features/pages/work/components/Work';
 import { Search } from './features/pages/search/components/Search';
 import Policy from './features/pages/policy/components/Policy';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <div className="wrapper">
         <div className="contents">
           <Routes>
@@ -24,7 +26,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </>
+    </QueryClientProvider>
   );
 }
 
