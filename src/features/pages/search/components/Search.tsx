@@ -1,6 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import Header from '../../../Header/components/Header';
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
+// import SearchPostData from '../../../Post/components/SearchPostData';
+
+const SearchPostData = lazy(
+  () => import('../../../Post/components/SearchPostData')
+);
 
 type Post = {
   userId: number;
@@ -33,12 +38,9 @@ export const Search = () => {
       <Header />
       <button onClick={() => clickPostData()}>記事を取得</button>
       <h1>search</h1>
-      {postData.map((item: Post) => (
-        <li key={item.id}>
-          <h2>{item.title}</h2>
-          <p>{item.body}</p>
-        </li>
-      ))}
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchPostData postData={postData} />
+      </Suspense>
     </div>
   );
 };
